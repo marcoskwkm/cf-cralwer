@@ -25,7 +25,6 @@ export const init = async () => {
   await page.type('#handleOrEmail', username as string)
   await page.type('#password', password as string)
   await Promise.all([page.waitForNavigation(), page.click('.submit')])
-  await page.screenshot({ path: 'login.png' })
   if ((await page.content()).match(/invalid.*password/i)) {
     console.error('Invalid username or password')
     process.exit(-1)
